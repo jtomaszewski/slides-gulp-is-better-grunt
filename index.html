@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Gulp - better grunt</title>
+    <link rel="stylesheet" href="styles/styles.css"/>
+  </head>
+  <body>
+    <article>
+      <section>
+        <h1>Gulp</h1>
+        <h2 class="gray">... better grunt?</h2>
+        <div class="author">by <strong><a href="http://jtom.me">jacek@jtom.me</a></strong></div>
+      </section>
+      <section>
+        <h2>A little bit of history</h2>
+        <h3>of front-end development</h3>
+      </section>
+      <section>
+        <h2>Years ago we had this</h2>
+        <pre class="tolong"><code class="language-markup">&lt;head&gt;
+  &lt;script type="text/javascript" src="js/jquery-1.6.2.min.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="js/jquery.jplayer.min.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="js/jquery.lightbox-0.5.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="js/jquery.cycle.all.min.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="js/jquery.mousewheel.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="js/jquery.jscrollpane.min.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="js/jquery.lightbox-0.5.js"&gt;&lt;/script&gt;
+  
+  &lt;link type="text/css" rel="stylesheet" href="css/style.css" /&gt;
+  &lt;link type="text/css" rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.16.custom.css" /&gt; 
+  &lt;link type="text/css" rel="stylesheet" href="css/jquery.lightbox-0.5.css" /&gt; 
+&lt;head/&gt;
+</code></pre>
+      </section>
+      <section data-bespoke-state="emphatic" class="facepalm"></section>
+      <section>
+        <h2>Currently, we have this</h2>
+        <div class="logos"><a href="https://github.com/bower/bower"><img src="images/bower.png" alt="Bower"></a><a href="http://gruntjs.com/"><img src="images/grunt-logo.png" alt="Grunt"></a><a href="http://yeoman.io/"><img src="images/yeoman-logo.a053.png" alt="Yeoman"></a></div>
+      </section>
+      <section>
+        <h2>So, it's like this</h2>
+        <pre><code>$ bower install --save angular
+$ bower install --save angular-resource
+
+</code><code class="language-javascript">// gruntfile.js
+grunt.initConfig({
+  concat: {
+    dist: {
+      src: [
+        'vendor/bower/angular/angular.js', 
+        'vendor/bower/angular-resource/angular-resource.js'
+      ],
+      dest: 'dist/js/vendor.js'
+    }
+  }
+});
+</code></pre>
+      </section>
+      <section>
+        <h2>and also like this</h2>
+        <ul>
+          <li>minify js, css, http files</li>
+          <li>compile other syntaxes (coffeescript, sass, jade, stylus, etc.)</li>
+          <li>watch files for changes</li>
+          <li>add license info</li>
+          <li>compile HTML templates into JS</li>
+          <li>use sourcemaps</li>
+          <li>hint for errors</li>
+          <li>compress images</li>
+        </ul>
+      </section>
+      <section>
+        <h2>or even like this</h2>
+        <ul>
+          <li>run tests</li>
+          <li>deploy to server</li>
+          <li>move/create somes files, directories, symlinks</li>
+          <li>run a HTTP server</li>
+        </ul>
+      </section>
+      <section>
+        <h2>This was fine.</h2>
+        <h3>But brought as to ..</h3>
+      </section>
+      <section class="spaghetti">
+        <div class="bullet"></div>
+        <div class="bullet">
+          <h2>this.</h2>
+          <pre data-src="examples/lineman_gruntfile.js" class="language-javascript toolong"></pre>
+        </div>
+      </section>
+      <section>
+        <h2 class="smaller">Grunt is fine for basic applications</h2>
+        <h3 class="smaller">but not for everything.</h3>
+        <ul>
+          <li><span class="con">Grunt config file is divided by plugins </span><span class="pro">(not modules / features)</span></li>
+          <li><span class="con">Generates a lot of tmp files, </span><span class="pro">which shouldn't be written to disc anyway and could be handled in memory</span>
+            <div class="example">compile .coffee files, concat into main.js, ngMinify, uglify, add license banner<br> = 4 tasks, 2 sets of temporary files</div>
+          </li>
+          <li><span class="con">A lot of plugins, </span><span class="pro">which configuration is often limited and often shouldn't even be a plugin</span></li>
+        </ul>
+      </section>
+      <section>
+        <h3>What if we could write tasks as stream-based commands on unix?</h3>
+        <pre class="small language-"><code>$ find src -name '*.coffee' | coffee | ng-minify | uglify --sourcemaps=true | concat > dist/js/main.js
+</code></pre>
+      </section>
+      <section data-bespoke-state="emphatic"><a href="http://gulpjs.com/"><img src="images/gulp-2x.png" alt="GulpJS" class="logo"></a></section>
+      <section>
+        <h2>Gulp</h2>
+        <h3>Code over configuration</h3>
+        <ul>
+          <li>Manually write your tasks, using a stream or promise</li>
+          <li>Gulp will take care of your tasks dependencies itself</li>
+          <li>Tasks are run concurrently</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Task example <a href="http://markgoodyear.com/2014/01/getting-started-with-gulp/" class="gray">(source)</a></h2>
+        <pre class="language-javascript"><code>gulp.task('scripts', function() {
+  return gulp.src('src/scripts/**/*.js') // <-- Read from FS
+  
+    // In memory transforms:
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter('default'))
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('dist/assets/js')) // <-- Write to FS
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/assets/js')) // <-- Write to FS
+    .pipe(livereload(server))
+    .pipe(notify({ message: 'Scripts task complete' }));
+});
+</code></pre>
+      </section>
+      <section>
+        <h2 class="bullet">Gulp consists only of four functions</h2>
+        <ul class="bullets">
+          <li><code>gulp.src(glob)</code><span class="desc">- create a stream from given file system glob.</span></li>
+          <li><code>gulp.dest(folder)</code><span class="desc">- save files from a stream to given directory.</span></li>
+          <li><code>gulp.task(name, [deps,], fn)</code><span class="desc">- define a task with optional dependencies.</span></li>
+          <li><code>gulp.watch(glob, [tasks])</code><span class="desc">- run a task when one of the globbed files is changed.</span></li>
+        </ul>
+        <p class="bullet pink"><strong>That's it!</strong></p>
+      </section>
+      <section>
+        <h2>Live demo</h2><a href="https://github.com/jtomaszewski/ionic-angular-cordova-gulp-seed/tree/78cd4498d297381db4650fc3600b918c432a95a1">jtomaszewski/ionic-angular-cordova-gulp-seed</a>
+      </section>
+      <section>
+        <h2>So why it's better than Grunt?</h2>
+        <p>As the gulpjs.com says:</p>
+        <ul class="nostyle">
+          <li><strong class="white">Speed</strong> - tasks run concurrently</li>
+          <li><strong class="white">Efficiency</strong> - no unnecessary temporary files</li>
+          <li><strong class="white">Simplicity</strong> - Gulpfile is much cleaner</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Watch out</h2>
+        <ul class="bullets">
+          <li><strong>It's still under heavy development.</strong><br>Some basic issues are yet to be resolved (<a href="https://github.com/wearefractal/gulp-coffee/issues/14">sourcemaps</a>, <a href="https://github.com/gulpjs/gulp/issues/259">watch</a>).</li>
+          <li>However, <strong>Gulp 4</strong> will resolve them completely (and change syntax a little).<br><small>More info <a href="https://github.com/gulpjs/gulp/issues/347">here</a> and <a href="https://github.com/gulpjs/gulp/issues/355">here</a>.</small></li>
+          <li><strong>Still, worth a try in your next project.</strong></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Gulp-Links</h2>
+        <div class="align-left">
+          <h4>Other slideshows</h4>
+          <ul>
+            <li><a href="http://markdalgleish.github.io/presentation-build-wars-gulp-vs-grunt/#1">Build Wars: Gulp vs Grunt</a></li>
+            <li><a href="http://murphyrandle.github.io/AGulpOfGulp/#/">A gulp of Gulp</a></li>
+            <li><a href="http://slides.com/contra/gulp">Gulp - the streaming build system</a></li>
+          </ul><br>
+          <h4>Blog posts</h4>
+          <ul>
+            <li><a href="http://www.100percentjs.com/just-like-grunt-gulp-browserify-now/">And just like that Grunt and RequireJS are out, it’s all about Gulp and Browserify now</a></li>
+            <li><a href="http://markgoodyear.com/2014/01/getting-started-with-gulp/">Getting started with Gulp</a></li>
+            <li><a href="http://jmperezperez.com/gulp-js/">Gulp.js, an alternative to Grunt.js</a></li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h2>Thank you!</h2>
+        <h3 class="bullet">Questions?</h3>
+        <div class="author footer">by <strong><a href="http://jtom.me">jacek@jtom.me</a></strong></div>
+      </section>
+    </article>
+    <script src="scripts/scripts.js"></script>
+  </body>
+</html>
