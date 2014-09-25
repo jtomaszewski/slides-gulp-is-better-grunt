@@ -3,54 +3,97 @@ html
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-    title Gulp - better grunt
+    title Gulp as a better Grunt?
 
-    // build:css styles/styles.css
-    //- Check out 'src/bower_components/prism/themes/' for available themes
-    link(rel='stylesheet', type='text/css', href='bower_components/prism/themes/prism-okaidia.css')
-    link(rel='stylesheet', type='text/css', href='styles/main.css')
-    // endbuild
+    link(rel='stylesheet', type='text/css', href='build/build.css')
 
   body
-
     article
 
-      section
-        h1 Gulp
-        h2.gray ... better grunt?
-        .author
-          | by 
-          strong
-            a(href="http://jtom.me") jacek@jtom.me
+      section.slide-intro(data-jt-chain="1")
+        .left.hide-when-1
+          a(href="http://gulpjs.com/")
+            img.logo(src="images/gulp-2x.png", alt="GulpJS")
+        .right
+          //- h1 Gulp
+          h2.white.hide-when-1
+            | as a better 
+            a.grunt(href="http://gruntjs.com/") Grunt
+            | ?
+          small.subcaption.light.gray 
+            span.hide-when-1 Automate your 
+            span.show-when-1.first What is the 
+            span.pink-when-1 frontend development workflow 
+            span.show-when-1.second ?  
+            span.hide-when-1 fully!
+
+          .author-block.hide-when-1
+            .author-block-left
+              img.author-image(src="http://jtomaszewski.eu/images/myphoto.png")
+            .author-block-right
+              .author-name Jacek Tomaszewski
+              .author-caption
+                a(href="http://jtom.me") jtom.me
+
+      section.slide-workflow
+        h2 Workflow
+        .row
+          .col.bullet
+            h4.col-title.pink Setup
+            ul
+              li Scaffold
+              li Download
+          .col.bullet
+            h4.col-title.pink Develop
+            ul
+              li Watch
+              li Livereload
+              li Lint
+              li Compile
+              li Test
+          .col.bullet
+            h4.col-title.pink Build
+            ul
+              li Compile
+              li Test
+              li Concat
+              li Minify
+              li Deploy
 
       section
         h2 A little bit of history
         h3 of front-end development
 
       section
-        h2 
-          | Years ago we had this
         pre.tolong
           code.language-markup.
-            &lt;head&gt;
-              &lt;script type="text/javascript" src="js/jquery-1.6.2.min.js"&gt;&lt;/script&gt;
-              &lt;script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"&gt;&lt;/script&gt;
-              &lt;script type="text/javascript" src="js/jquery.jplayer.min.js"&gt;&lt;/script&gt;
-              &lt;script type="text/javascript" src="js/jquery.lightbox-0.5.js"&gt;&lt;/script&gt;
-              &lt;script type="text/javascript" src="js/jquery.cycle.all.min.js"&gt;&lt;/script&gt;
-              &lt;script type="text/javascript" src="js/jquery.mousewheel.js"&gt;&lt;/script&gt;
-              &lt;script type="text/javascript" src="js/jquery.jscrollpane.min.js"&gt;&lt;/script&gt;
-              &lt;script type="text/javascript" src="js/jquery.lightbox-0.5.js"&gt;&lt;/script&gt;
+            &lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+              &lt;head&gt;
+                &lt;link type="text/css" rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.16.custom.css" /&gt; 
+                &lt;link type="text/css" rel="stylesheet" href="css/jquery.lightbox-0.5.css" /&gt; 
+                &lt;link type="text/css" rel="stylesheet" href="css/main.css" /&gt;
 
-              &lt;link type="text/css" rel="stylesheet" href="css/style.css" /&gt;
-              &lt;link type="text/css" rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.16.custom.css" /&gt; 
-              &lt;link type="text/css" rel="stylesheet" href="css/jquery.lightbox-0.5.css" /&gt; 
-            &lt;head/&gt;
+                &lt;script type="text/javascript" src="js/jquery-1.6.2.min.js"&gt;&lt;/script&gt;
+                &lt;script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"&gt;&lt;/script&gt;
+                &lt;script type="text/javascript" src="js/jquery.jplayer.min.js"&gt;&lt;/script&gt;
+                &lt;script type="text/javascript" src="js/jquery.lightbox-0.5.js"&gt;&lt;/script&gt;
+                &lt;script type="text/javascript" src="js/jquery.cycle.all.min.js"&gt;&lt;/script&gt;
+                &lt;script type="text/javascript" src="js/jquery.mousewheel.js"&gt;&lt;/script&gt;
+                &lt;script type="text/javascript" src="js/jquery.jscrollpane.min.js"&gt;&lt;/script&gt;
+                &lt;script type="text/javascript" src="js/jquery.lightbox-0.5.js"&gt;&lt;/script&gt;
+                &lt;script type="text/javascript" src="js/main.js"&gt;&lt;/script&gt;
+              &lt;head/&gt;
+
+              (...)
+        br
+        h3 
+          | Frontend code years ago
 
       section.facepalm(data-bespoke-state='emphatic')
 
       section
-        h2 Currently, we have this
+        h3 Later on, we learned to use these guys:
         .logos
           a(href="https://github.com/bower/bower")
             img(src="images/bower.png", alt="Bower")
@@ -60,6 +103,32 @@ html
 
           a(href="http://yeoman.io/") 
             img(src="images/yeoman-logo.a053.png", alt="Yeoman")
+
+      section
+        .row
+          .left
+            a(href="https://github.com/bower/bower")
+              img.logo.logo-small(src="images/bower.png", alt="Bower")
+          .right
+            h2 Bower
+            h3 for handling our dependencies
+
+      section
+        img.bullet.js-bullet__hide-previous-bullet.slide__absolute.logo(src="images/bower-screenshots/1.png")
+        img.bullet.js-bullet__hide-previous-bullet.slide__absolute.logo(src="images/bower-screenshots/2.png")
+        img.bullet.js-bullet__hide-previous-bullet.slide__absolute.logo(src="images/bower-screenshots/3.png")
+        img.bullet.js-bullet__hide-previous-bullet.slide__absolute.logo(src="images/bower-screenshots/4.png")
+        img.bullet.js-bullet__hide-previous-bullet.slide__absolute.logo(src="images/bower-screenshots/5.png")
+        img.bullet.js-bullet__hide-previous-bullet.slide__absolute.logo(src="images/bower-screenshots/6.png")
+        pre.bullet.js-bullet__hide-previous-bullet.small.language-
+          code.
+            bower install --save jquery
+            bower install --save jquery-ui
+            bower install --save jplayer
+            bower install --save lightbox
+            bower install --save jquery.cycle
+            bower install --save jquery.mousewheel
+            bower install --save jquery.jscrollpane
 
       section
         h2 So, it's like this
@@ -273,21 +342,7 @@ html
       //-   h2 Emphatic Slide!
       //-   h3 Powered by <a href="https://github.com/markdalgleish/bespoke-state">bespoke-state</a>
 
-    // build:js scripts/scripts.js
-    script(src='bower_components/bespoke.js/dist/bespoke.min.js')
-    script(src='bower_components/bespoke-keys/dist/bespoke-keys.min.js')
-    script(src='bower_components/bespoke-touch/dist/bespoke-touch.min.js')
-    script(src='bower_components/bespoke-bullets/dist/bespoke-bullets.min.js')
-    script(src='bower_components/bespoke-scale/dist/bespoke-scale.min.js')
-    script(src='bower_components/bespoke-hash/dist/bespoke-hash.min.js')
-    script(src='bower_components/bespoke-progress/dist/bespoke-progress.min.js')
-    script(src='bower_components/bespoke-state/dist/bespoke-state.min.js')
-    script(src='bower_components/bespoke-convenient/dist/bespoke-convenient.min.js')
-    script(src='bower_components/bespoke-indexfinger/dist/bespoke-indexfinger.min.js')
-    script(src='bower_components/bespoke-secondary/dist/bespoke-secondary.min.js')
-    script(src='bower_components/prism/prism.js')
-    script(src='scripts/main.js')
-    // endbuild
+    script(src='build/build.js')
 
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

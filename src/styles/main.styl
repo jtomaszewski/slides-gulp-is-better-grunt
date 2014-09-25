@@ -1,14 +1,20 @@
+// Import CSS from "node_modules" and "bower_components"
+// thanks to Stylus' "import css" and "paths" options
+
+@import 'prism/themes/prism-okaidia.css'
+// Check out "bower_components/prism/themes/" for available themes
+
 @import 'nib' // CSS3 extensions for Stylus: http://visionmedia.github.io/nib/
 
 // variables!
 
 slide_width = 640px
 slide_height = 480px
-slide_background = #151515
+slide_background = #111
 
 slide_transition_length = .6s
 slide_transition_easing = ease
-slide_transition_rotate_y = 90deg
+slide_transition_rotate_y = 15deg
 // Safari bugs out on 3d transform-origins, so we have to fake it
 slide_transition_nudge_x = -100px
 
@@ -17,6 +23,7 @@ bullet_transition_easing = ease
 bullet_transition_translate_x = 16px
 
 pink = #EB4A4B
+grunt = #CF8C51
 
 // mixins!
 background-cover(image)
@@ -173,7 +180,7 @@ pre
 body
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
   font-size: 18px
-  color: #bbb
+  color: #fff
   background-color #111
 
 h1
@@ -187,7 +194,7 @@ h2
   font-size: 42px
   letter-spacing: -1px
   margin-bottom: 8px
-  color: lighten(pink, 20%)
+  color: pink
   &.smaller
     font-size 28px
 
@@ -234,6 +241,8 @@ del
 
 .logo
   max-height: 80%
+  &.logo-small
+    max-height: 5em
 
 .tolong
   font-size .5em
@@ -267,12 +276,14 @@ del
 
 .pink
   color pink
-
 .white
   color white
-
 .gray
-  color #999
+  color #ccc
+.grunt
+  color #E48632
+.light
+  font-weight lighter
 
 .author
   position absolute
@@ -282,8 +293,95 @@ del
   font-size 1.2em
   a
     color inherit
-  
+
+.author-block
+  border-top 1px solid #666
+  margin-top: 1em
+  padding-top 1em
+  display flex
+  flex-direction: row
+  a
+    color inherit
+  .author-block-right
+    margin-left: .5em
+    text-align left
+  .author-image
+    border-radius: 50%
+    width: 3em
+    height: 3em
+  .author-name
+    color #fff
+  .author-caption
+    font-weight: lighter
+    font-size .8em
+    a
+      color pink
+
 .nostyle
   list-style none
   margin 1em
   text-align center
+
+.row
+  display: flex
+  flex-direction: row
+  .col
+    flex 1
+    margin: 0 2em
+
+.slide-intro
+  @extend .row
+
+  .logo
+    max-height 40%
+    margin-top -6.1em
+
+  .right
+    text-align left
+    margin-left 1em
+
+  .grunt
+    color grunt
+
+  .subcaption
+    display block
+    margin-top -.3em
+
+.slide__absolute
+  position absolute
+  top 15%
+
+.hide-when-1
+  opacity: 1
+  transition: opacity 0.5s
+  .jt-chain-1 &
+    opacity: 0
+
+.show-when-1
+  opacity: 0
+  position absolute
+  display inline-block
+  transition: opacity 0.5s
+  transition-delay: 0
+  .jt-chain-1 &
+    opacity: 1
+    transition-delay: .5s
+  &.first
+    margin-left: -5.3em
+
+.pink-when-1
+  transition: color 0.5s
+  .jt-chain-1 &
+    color pink
+
+.slide-workflow
+  .col
+    text-align
+    .col-title
+      text-transform: uppercase
+    ul
+      font-size .8em
+
+    &.bullet
+      &.bespoke-bullet-active:not(.bespoke-bullet-current)
+        opacity 0
