@@ -51,9 +51,9 @@ gulp.task('css', ['clean:css'], function() {
     .pipe(connect.reload());
 });
 
-gulp.task('images', ['clean:images'], function() {
-  return gulp.src('src/images/**/*')
-    .pipe(gulp.dest('dist/images'))
+gulp.task('assets', ['clean:assets'], function() {
+  return gulp.src('src/assets/**/*')
+    .pipe(gulp.dest('dist/assets'))
     .pipe(connect.reload());
 });
 
@@ -77,8 +77,8 @@ gulp.task('clean:css', function() {
     .pipe(rimraf());
 });
 
-gulp.task('clean:images', function() {
-  return gulp.src('dist/images')
+gulp.task('clean:assets', function() {
+  return gulp.src('dist/assets')
     .pipe(rimraf());
 });
 
@@ -94,7 +94,7 @@ gulp.task('connect', ['build'], function(done) {
 gulp.task('watch', function() {
   gulp.watch('src/**/*.jade', ['html']);
   gulp.watch('src/styles/**/*.styl', ['css']);
-  gulp.watch('src/images/**/*', ['images']);
+  gulp.watch('src/assets/**/*', ['assets']);
   gulp.watch([
     'src/scripts/**/*.js',
     'bespoke-theme-*/dist/*.js' // Allow themes to be developed in parallel
@@ -105,6 +105,6 @@ gulp.task('deploy', ['build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
-gulp.task('build', ['js', 'html', 'css', 'images']);
+gulp.task('build', ['js', 'html', 'css', 'assets']);
 gulp.task('serve', ['connect', 'watch']);
 gulp.task('default', ['build']);

@@ -13,7 +13,7 @@ html
       section.slide-intro(data-jt-chain="1")
         .left.hide-when-1
           a(href="http://gulpjs.com/")
-            img.logo(src="images/gulp-2x.png", alt="GulpJS")
+            img.logo(src="assets/images/gulp-2x.png", alt="GulpJS")
         .right
           //- h1 Gulp
           h2.white.hide-when-1
@@ -23,7 +23,7 @@ html
           small.subcaption.light.gray 
             span.hide-when-1 Automate your 
             span.show-when-1.first What is the 
-            span.pink-when-1 frontend development workflow 
+            span.pink-when-1 front-end development workflow 
             span.show-when-1.second ?  
             span.hide-when-1 fully!
 
@@ -36,21 +36,21 @@ html
                 a(href="http://jtom.me") jtom.me
 
       section.slide-workflow
-        h2 Workflow
+        h2 Front-end development Workflow
         .row
           .col.bullet
             h4.col-title.pink Setup
             ul
-              li Scaffold
               li Download
+              li Scaffold
           .col.bullet
             h4.col-title.pink Develop
             ul
               li Watch
-              li Livereload
               li Lint
               li Compile
               li Test
+              li Livereload
           .col.bullet
             h4.col-title.pink Build
             ul
@@ -62,65 +62,88 @@ html
 
       section
         h2 A little bit of history
-        h3 of front-end development
+        h3 of front-end development workflow
+
+      section
+        h2 2011
+        h3.bullet Setup phase = download & scaffold ...
+
+        .bullet.sticky
+          img.logo(src="assets/images/bower-screenshots/1.png")
+        .bullet.sticky
+          img.logo(src="assets/images/bower-screenshots/2.png")
+        .bullet.sticky
+          img.logo(src="assets/images/bower-screenshots/3.png")
+        .bullet.sticky
+          img.logo(src="assets/images/bower-screenshots/4.png")
+        .bullet.sticky
+          img.logo(src="assets/images/bower-screenshots/5.png")
+        .bullet.sticky
+          img.logo(src="assets/images/bower-screenshots/6.png")
 
       section
         pre.tolong
           code.language-markup.
-            &lt;!DOCTYPE html&gt;
-            &lt;html&gt;
-              &lt;head&gt;
-                &lt;link type="text/css" rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.16.custom.css" /&gt; 
-                &lt;link type="text/css" rel="stylesheet" href="css/jquery.lightbox-0.5.css" /&gt; 
-                &lt;link type="text/css" rel="stylesheet" href="css/main.css" /&gt;
+            &lt;head&gt;
+              &lt;link type="text/css" rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.16.custom.css" /&gt; 
+              &lt;link type="text/css" rel="stylesheet" href="css/jquery.lightbox-0.5.css" /&gt; 
+              &lt;link type="text/css" rel="stylesheet" href="css/main.css" /&gt;
 
-                &lt;script type="text/javascript" src="js/jquery-1.6.2.min.js"&gt;&lt;/script&gt;
-                &lt;script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"&gt;&lt;/script&gt;
-                &lt;script type="text/javascript" src="js/jquery.jplayer.min.js"&gt;&lt;/script&gt;
-                &lt;script type="text/javascript" src="js/jquery.lightbox-0.5.js"&gt;&lt;/script&gt;
-                &lt;script type="text/javascript" src="js/jquery.cycle.all.min.js"&gt;&lt;/script&gt;
-                &lt;script type="text/javascript" src="js/jquery.mousewheel.js"&gt;&lt;/script&gt;
-                &lt;script type="text/javascript" src="js/jquery.jscrollpane.min.js"&gt;&lt;/script&gt;
-                &lt;script type="text/javascript" src="js/jquery.lightbox-0.5.js"&gt;&lt;/script&gt;
-                &lt;script type="text/javascript" src="js/main.js"&gt;&lt;/script&gt;
-              &lt;head/&gt;
-
-              (...)
-        br
-        h3 
-          | Frontend code years ago
-
+              &lt;script type="text/javascript" src="js/jquery-1.6.2.min.js"&gt;&lt;/script&gt;
+              &lt;script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"&gt;&lt;/script&gt;
+              &lt;script type="text/javascript" src="js/jquery.jplayer.min.js"&gt;&lt;/script&gt;
+              &lt;script type="text/javascript" src="js/jquery.lightbox-0.5.js"&gt;&lt;/script&gt;
+              &lt;script type="text/javascript" src="js/jquery.cycle.all.min.js"&gt;&lt;/script&gt;
+              &lt;script type="text/javascript" src="js/jquery.mousewheel.js"&gt;&lt;/script&gt;
+              &lt;script type="text/javascript" src="js/jquery.jscrollpane.min.js"&gt;&lt;/script&gt;
+              &lt;script type="text/javascript" src="js/jquery.lightbox-0.5.js"&gt;&lt;/script&gt;
+              &lt;script type="text/javascript" src="js/main.js"&gt;&lt;/script&gt;
+            &lt;head/&gt;
+        h3.smaller
+          .bullet In 2011, we didn't need to compile anything
+          .bullet 
+            span.pink Minify 
+            | and 
+            span.pink concatenation
+            | ? We can do it manually
+          .bullet.bullet-hide-if-not-current.sticky
+            img.logo(src="assets/images/bower-screenshots/7.png")
+          .bullet
+            span.pink Deployment? 
+            | Via FTP.
+          .bullet.bullet-hide-if-not-current.sticky
+            img.logo(src="assets/images/bower-screenshots/8.gif")
+          .bullet
+            span.pink Testing? 
+            | Waat? It works. If not, I test it manually.
+        
       section.facepalm(data-bespoke-state='emphatic')
 
       section
-        h3 Later on, we learned to use these guys:
+        h3 
+          | Finally, 
+          span.pink in 2012
+          | , we met these guys:
         .logos
           a(href="https://github.com/bower/bower")
-            img(src="images/bower.png", alt="Bower")
-
-          a(href="http://gruntjs.com/") 
-            img(src="images/grunt-logo.png", alt="Grunt")
+            img(src="assets/images/bower.png", alt="Bower")
 
           a(href="http://yeoman.io/") 
-            img(src="images/yeoman-logo.a053.png", alt="Yeoman")
+            img(src="assets/images/yeoman-logo.a053.png", alt="Yeoman")
+
+          a(href="http://gruntjs.com/") 
+            img(src="assets/images/grunt-logo.png", alt="Grunt")
 
       section
-        .row
+        .row.bullet
           .left
             a(href="https://github.com/bower/bower")
-              img.logo.logo-small(src="images/bower.png", alt="Bower")
-          .right
+              img.logo.logo-small(src="assets/images/bower.png", alt="Bower")
+          .right.margin-left
             h2 Bower
-            h3 for handling our dependencies
+            h3.smaller to handle project's dependencies
 
-      section
-        img.bullet.js-bullet__hide-previous-bullet.slide__absolute.logo(src="images/bower-screenshots/1.png")
-        img.bullet.js-bullet__hide-previous-bullet.slide__absolute.logo(src="images/bower-screenshots/2.png")
-        img.bullet.js-bullet__hide-previous-bullet.slide__absolute.logo(src="images/bower-screenshots/3.png")
-        img.bullet.js-bullet__hide-previous-bullet.slide__absolute.logo(src="images/bower-screenshots/4.png")
-        img.bullet.js-bullet__hide-previous-bullet.slide__absolute.logo(src="images/bower-screenshots/5.png")
-        img.bullet.js-bullet__hide-previous-bullet.slide__absolute.logo(src="images/bower-screenshots/6.png")
-        pre.bullet.js-bullet__hide-previous-bullet.small.language-
+        pre.bullet.small.language-
           code.
             bower install --save jquery
             bower install --save jquery-ui
@@ -131,14 +154,53 @@ html
             bower install --save jquery.jscrollpane
 
       section
-        h2 So, it's like this
+        .row.bullet
+          .left
+            a(href="http://yeoman.io/") 
+              img.logo.logo-small(src="assets/images/yeoman-logo.a053.png", alt="Yeoman")
+          .right.margin-left
+            h2 Yeoman
+            h3.smaller to bootstrap and scaffold projects
+
+        pre.bullet.small.language-
+          code.
+            bower install --save jquery
+            bower install --save jquery-ui
+            bower install --save jplayer
+            bower install --save lightbox
+            bower install --save jquery.cycle
+            bower install --save jquery.mousewheel
+            bower install --save jquery.jscrollpane
+
+      section
+        .row.bullet
+          .left
+            a(href="http://gruntjs.com/") 
+              img.logo.logo-small(src="assets/images/grunt-logo.png", alt="Grunt")
+          .right.margin-left
+            h2 Grunt
+            h3.smaller to automate development
+
+        pre.bullet.small.language-
+          code.
+            bower install --save jquery
+            bower install --save jquery-ui
+            bower install --save jplayer
+            bower install --save lightbox
+            bower install --save jquery.cycle
+            bower install --save jquery.mousewheel
+            bower install --save jquery.jscrollpane
+
+      section
+        h3 Frontend workflow today
         pre
           code.
+            # shell
             $ bower install --save angular
             $ bower install --save angular-resource
 
 
-          code.language-javascript.
+          code.smaller.language-javascript.
             // gruntfile.js
             grunt.initConfig({
               concat: {
@@ -153,35 +215,35 @@ html
             });
 
       section
-        h2 and also like this
-        ul
-          li minify js, css, http files
-          li compile other syntaxes (coffeescript, sass, jade, stylus, etc.)
-          li watch files for changes
-          li add license info
-          li compile HTML templates into JS
-          li use sourcemaps
-          li hint for errors
-          li compress images
-
-      section
-        h2 or even like this
-        ul
-          li run tests
-          li deploy to server
-          li move/create somes files, directories, symlinks
-          li run a HTTP server
+        h2 Grunt plugins allow us to:
+        .row
+          .col
+            ul
+              li minify js, css, http files
+              li compile other syntaxes (coffeescript, sass, jade, stylus, etc.)
+              li watch files for changes
+              li add license info
+              li compile HTML templates into JS
+              li use sourcemaps
+          .col
+            ul
+              li hint for errors
+              li compress images
+              li run tests
+              li deploy to server
+              li move/create somes files, directories, symlinks
+              li run a HTTP server
 
       section
         h2 This was fine.
         h3 But brought as to ..
 
-      section.spaghetti
+      section.slide-spaghetti
         .bullet
-        .bullet
-          h2 this.
+        .bullet.bullet-with-code
+          h4.gray ... big bunch of spaghetti code.
 
-          pre.language-javascript.toolong(data-src="examples/lineman_gruntfile.js")
+          pre.language-javascript.toolong(data-src="assets/examples/lineman_gruntfile.js")
 
       section
         h2.smaller Grunt is fine for basic applications
@@ -211,7 +273,7 @@ html
 
       section(data-bespoke-state='emphatic')
         a(href="http://gulpjs.com/") 
-          img.logo(src="images/gulp-2x.png", alt="GulpJS")
+          img.logo(src="assets/images/gulp-2x.png", alt="GulpJS")
 
       section
         h2 Gulp

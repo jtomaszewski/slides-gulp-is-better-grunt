@@ -10,7 +10,7 @@
 
 slide_width = 640px
 slide_height = 480px
-slide_background = #111
+slide_background = #151515
 
 slide_transition_length = .6s
 slide_transition_easing = ease
@@ -22,6 +22,7 @@ bullet_transition_length = .3s
 bullet_transition_easing = ease
 bullet_transition_translate_x = 16px
 
+gray = #aaa
 pink = #EB4A4B
 grunt = #CF8C51
 
@@ -186,15 +187,15 @@ body
 h1
   font-size: 72px
   line-height: 82px
-  letter-spacing: -2px
   margin-bottom: 16px
+  letter-spacing: 0
   color: pink
 
 h2
   font-size: 42px
-  letter-spacing: -1px
   margin-bottom: 8px
   color: pink
+  letter-spacing: 0
   &.smaller
     font-size 28px
 
@@ -202,6 +203,7 @@ h3
   font-size: 24px
   font-weight: normal
   margin-bottom: 24px
+  color gray
   &.smaller
     font-size 20px
 
@@ -211,7 +213,7 @@ hr
   height: 20px
 
 ul
-  list-style: disc
+  list-style: circle
   text-align left
   margin .5em 0 .5em 1em
 
@@ -230,7 +232,7 @@ del
   opacity: .5
 
 .facepalm
-  background-cover "../images/annoyed-facepalm-picard-l.png"
+  background-cover "../assets/images/annoyed-facepalm-picard-l.png"
 
 .logos
   margin-top 1em
@@ -252,11 +254,8 @@ del
   font-size .4em
   max-height 50em
 
-.spaghetti
-  background-cover "../images/curried+sardine+spaghetti+2.JPG"
-
-  h2
-    color #fff
+.slide-spaghetti
+  background-cover "../assets/images/curried+sardine+spaghetti+2.JPG"
 
 .pro
   color: #B99844
@@ -328,6 +327,8 @@ del
   .col
     flex 1
     margin: 0 2em
+.margin-left
+  margin-left: 1em
 
 .slide-intro
   @extend .row
@@ -347,9 +348,22 @@ del
     display block
     margin-top -.3em
 
-.slide__absolute
+  .show-when-1
+    position absolute
+    display inline-block
+    &.first
+      margin-left: -5.3em
+
+.sticky
   position absolute
   top 15%
+  left: 15%
+  right 15%
+  text-align center
+
+.sticky-title
+  left: 0
+  right 0
 
 .hide-when-1
   opacity: 1
@@ -359,29 +373,43 @@ del
 
 .show-when-1
   opacity: 0
-  position absolute
-  display inline-block
   transition: opacity 0.5s
   transition-delay: 0
   .jt-chain-1 &
     opacity: 1
     transition-delay: .5s
-  &.first
-    margin-left: -5.3em
 
 .pink-when-1
   transition: color 0.5s
   .jt-chain-1 &
     color pink
 
+.bullet-hide-if-not-current
+  &.bespoke-bullet-active:not(.bespoke-bullet-current)
+    opacity 0
+
 .slide-workflow
+  h2
+    text-transform: uppercase
+    font-size 24px
+    color gray
+    position absolute
+    top 10%
+    text-align center
+    left: 0
+    right 0
   .col
-    text-align
+    text-align left
     .col-title
       text-transform: uppercase
+      text-align left
     ul
       font-size .8em
+      margin-left 1.3em
 
     &.bullet
+      &.bespoke-bullet-active
+        //
       &.bespoke-bullet-active:not(.bespoke-bullet-current)
-        opacity 0
+        &, .col-title
+          color gray
