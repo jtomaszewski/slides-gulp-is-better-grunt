@@ -25,6 +25,8 @@ bullet_transition_translate_x = 16px
 gray = #aaa
 pink = #EB4A4B
 grunt = #CF8C51
+green = #0a0
+gold = gold
 
 // mixins!
 background-cover(image)
@@ -172,7 +174,7 @@ article
 // prism styles
 
 pre
-  padding: 26px !important
+  padding: 1.5em !important
   border-radius: 8px
   font-size .8em
 
@@ -212,10 +214,12 @@ hr
   visibility: hidden
   height: 20px
 
+ul, ol
+  text-align left
+  margin .5em 0 .5em 1.5em
+
 ul
   list-style: circle
-  text-align left
-  margin .5em 0 .5em 1em
 
 li
   margin-bottom: 12px
@@ -254,8 +258,25 @@ del
   font-size .4em
   max-height 50em
 
+.title
+  position relative
+  margin-bottom 1em
+  .title-caption
+    position absolute
+    left: 0
+    bottom: -1em
+    text-align: left
+    text-transform: none
+    font-weight normal
+    font-size 10px
+
 .slide-spaghetti
   background-cover "../assets/images/curried+sardine+spaghetti+2.JPG"
+  .title
+    color white
+    display inline-block
+    background-color: #272822
+    padding: .2em .5em
 
 .pro
   color: #B99844
@@ -277,6 +298,10 @@ del
   color pink
 .white
   color white
+.green
+  color green
+.gold
+  color gold
 .gray
   color #ccc
 .grunt
@@ -354,6 +379,14 @@ del
     &.first
       margin-left: -5.3em
 
+.relative
+  position relative
+  width: 150%
+.absolute
+  position absolute
+  left: 15%
+  right: 15%
+
 .sticky
   position absolute
   top 15%
@@ -393,11 +426,7 @@ del
     text-transform: uppercase
     font-size 24px
     color gray
-    position absolute
-    top 10%
-    text-align center
-    left: 0
-    right 0
+    margin-top -5em
   .col
     text-align left
     .col-title
@@ -413,3 +442,7 @@ del
       &.bespoke-bullet-active:not(.bespoke-bullet-current)
         &, .col-title
           color gray
+
+.slide-unix-commands
+  .relative
+    min-height 15em

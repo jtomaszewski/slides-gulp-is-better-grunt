@@ -36,7 +36,12 @@ html
                 a(href="http://jtom.me") jtom.me
 
       section.slide-workflow
-        h2 Front-end development Workflow
+        h2.title
+          | Front-end development Workflow
+          small.title-caption
+            | (by 
+            a(href="https://speakerdeck.com/kristories/automating-your-workflow-with-gulp-dot-js") @kristories
+            | )
         .row
           .col.bullet
             h4.col-title.pink Setup
@@ -145,13 +150,15 @@ html
 
         pre.bullet.small.language-
           code.
-            bower install --save jquery
-            bower install --save jquery-ui
-            bower install --save jplayer
-            bower install --save lightbox
-            bower install --save jquery.cycle
-            bower install --save jquery.mousewheel
-            bower install --save jquery.jscrollpane
+            <span class="gold">$</span> npm install -g bower
+
+            <span class="gold">$</span> bower install --save jquery
+            <span class="gold">$</span> bower install --save jquery-ui
+            <span class="gold">$</span> bower install --save jplayer
+            <span class="gold">$</span> bower install --save lightbox
+            <span class="gold">$</span> bower install --save jquery.cycle
+            <span class="gold">$</span> bower install --save jquery.mousewheel
+            <span class="gold">$</span> bower install --save jquery.jscrollpane
 
       section
         .row.bullet
@@ -161,16 +168,25 @@ html
           .right.margin-left
             h2 Yeoman
             h3.smaller to bootstrap and scaffold projects
-
+  
         pre.bullet.small.language-
           code.
-            bower install --save jquery
-            bower install --save jquery-ui
-            bower install --save jplayer
-            bower install --save lightbox
-            bower install --save jquery.cycle
-            bower install --save jquery.mousewheel
-            bower install --save jquery.jscrollpane
+            <span class="gold">$</span> npm install -g yo generator-bespoke
+            <span class="gold">$</span> yo bespoke
+
+            [?] What is the title of your presentation? Hello World
+            [?] Would you like to use a pre-made theme? Yes
+            [?] Would you like bullet lists? Yes
+            ...
+               create gulpfile.js
+               create README.md
+               create .bowerrc
+               create src/index.jade
+               create src/scripts/main.js
+            ...
+
+            I'm all done. 
+            Run `gulp serve` to run HTTP server on localhost:8080 and open your presentation!
 
       section
         .row.bullet
@@ -183,21 +199,35 @@ html
 
         pre.bullet.small.language-
           code.
-            bower install --save jquery
-            bower install --save jquery-ui
-            bower install --save jplayer
-            bower install --save lightbox
-            bower install --save jquery.cycle
-            bower install --save jquery.mousewheel
-            bower install --save jquery.jscrollpane
+            <span class="gold">$</span> grunt
+
+            Running "<span class="gray">jshint</span>" (jshint) task
+            <span class="green">>></span> 47 file lint free.
+
+            Running "<span class="gray">qunit</span>" (qunit) task
+            Testing test/tiny-pubsub.html....OK
+            <span class="green">>></span> 4 assertions passed (23ms)
+
+            Running "<span class="gray">clean:dist</span>" (clean) task
+            Cleaning "dist"...OK
+
+            Running "<span class="gray">concat:dist</span>" (concat) task
+            File "dist/ba-tiny-pubsub.js" created.
+
+            Running "<span class="gray">uglify:dist</span>" (uglify) task
+            File "dist/ba-tiny-pubsub.min.js" created.
+            Compressed size: <span class="green">119</span> bytes gzipped (<span class="green">185</span> bytes minified).
+             
+            <span class="green">Done, without errors.</span>
+             
 
       section
         h3 Frontend workflow today
         pre
           code.
             # shell
-            $ bower install --save angular
-            $ bower install --save angular-resource
+            <span class="gold">$</span> bower install --save angular
+            <span class="gold">$</span> bower install --save angular-resource
 
 
           code.smaller.language-javascript.
@@ -219,20 +249,20 @@ html
         .row
           .col
             ul
-              li minify js, css, http files
-              li compile other syntaxes (coffeescript, sass, jade, stylus, etc.)
-              li watch files for changes
-              li add license info
-              li compile HTML templates into JS
-              li use sourcemaps
+              li.bullet minify js, css, http files
+              li.bullet compile other syntaxes (coffeescript, sass, jade, stylus, etc.)
+              li.bullet hint for errors
+              li.bullet watch files for changes
+              li.bullet run a HTTP server
+              li.bullet run tests
           .col
             ul
-              li hint for errors
-              li compress images
-              li run tests
-              li deploy to server
-              li move/create somes files, directories, symlinks
-              li run a HTTP server
+              li.bullet add license info
+              li.bullet compile HTML templates into JS
+              li.bullet use sourcemaps
+              li.bullet compress images
+              li.bullet move/create somes files, directories, symlinks
+              li.bullet deploy to server
 
       section
         h2 This was fine.
@@ -241,7 +271,7 @@ html
       section.slide-spaghetti
         .bullet
         .bullet.bullet-with-code
-          h4.gray ... big bunch of spaghetti code.
+          h4.title ... big bunch of spaghetti code.
 
           pre.language-javascript.toolong(data-src="assets/examples/lineman_gruntfile.js")
 
@@ -261,15 +291,31 @@ html
               br
               |  = 4 tasks, 2 sets of temporary files
 
-          li
-            span.con A lot of plugins, 
-            span.pro which configuration is often limited and often shouldn't even be a plugin
-
-      section
+      section.slide-unix-commands
         h3 What if we could write tasks as stream-based commands on unix?
-        pre.small.language-
-          code.
-            $ find src -name '*.coffee' | coffee | ng-minify | uglify --sourcemaps=true | concat > dist/js/main.js
+
+        .relative
+          .bullet.bullet-hide-if-not-current.absolute.align-left
+            h4.smaller.pink Example of Unix commands
+            ol
+              li Find all files in this directory
+              li Get only those with word "grunt"
+              li Delete them
+            pre.language-
+              code.
+                <span class="gold">$</span> find . | grep -l "grunt" | xargs -I {} rm -rf {}
+
+          .bullet.bullet-hide-if-not-current.absolute.align-left
+            h4.smaller.pink Example of "Imaginary front-end command"
+            ol
+              li Find all *.coffee files, 
+              li Compile them to JS, 
+              li Send through ngMinify and UglifyJS (using sourcemaps), 
+              li Concat into one file,
+              li Finally save into one final file: "dist/js/main.js".
+            pre.small.language-
+              code.
+                <span class="gold">$</span> find src -name '*.coffee' | coffee | ng-minify | uglify --sourcemaps=true | concat > dist/js/main.js
 
       section(data-bespoke-state='emphatic')
         a(href="http://gulpjs.com/") 
