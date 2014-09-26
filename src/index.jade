@@ -282,7 +282,7 @@ html
             span.pro Grunt config file is divided by plugins 
             span.con (not modules / features)
 
-          li.bullet
+          li.bullet.relative
             span.pro Generates a lot of tmp files, 
             span.con which shouldn't be written to disc anyway and could be handled in memory
             .example 
@@ -295,15 +295,23 @@ html
             a(href="http://slides.com/contra/gulp#/10")
               img.autoresize(src="assets/images/oeCGJUS.png")
 
+            .image-caption
+              | image by: 
+              a(href="contra/gulp") contra/gulp
+
       section.slide-alternative
 
       section.slide-unix-commands
         h3 What if we could write tasks as stream-based commands on unix?
 
-        .relative
+        .relative.extended-width
           .bullet.bullet-hide-if-not-current.absolute.align-left
             a(href="http://slides.com/contra/gulp#/9")
             img.autoresize(src="assets/images/B0B77QN.png")
+
+            .image-caption
+              | image by: 
+              a(href="contra/gulp") contra/gulp
 
           .bullet.bullet-hide-if-not-current.absolute.align-left
             h4.smaller.pink Example of Unix commands
@@ -406,7 +414,7 @@ html
           code.
             gulp.task(name, [deps,], fn)
 
-        .relative(style="height:15em")
+        .relative.extended-width(style="height:15em")
           pre.language-javascript.bullet.bullet-hide-if-not-current.sticky
             code.
               gulp.task("name", ["dependency-task"], function(done) {
@@ -426,7 +434,7 @@ html
         h2.smaller
           code gulp.src(glob)
 
-        .relative(style="height:15em")
+        .relative.extended-width(style="height:15em")
           pre.language-javascript.bullet.bullet-hide-if-not-current.sticky
             code.
               gulp.src(["app/js/**/*.js", "assets/js/**/*.js"])
@@ -442,7 +450,7 @@ html
         h2.smaller
           code gulp.dest(glob)
 
-        .relative(style="height:15em")
+        .relative.extended-width(style="height:15em")
           pre.language-javascript.bullet.bullet-hide-if-not-current.sticky
             code.
               gulp.dest("./dist/js/")
@@ -459,7 +467,7 @@ html
         h2.smaller
           code gulp.watch(glob, tasks)
 
-        .relative(style="height:15em")
+        .relative.extended-width(style="height:15em")
           pre.language-javascript.bullet.bullet-hide-if-not-current.sticky
             code.
               gulp.task("watch", function(){
