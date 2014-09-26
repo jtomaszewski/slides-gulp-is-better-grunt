@@ -31,7 +31,7 @@ gold = gold
 // mixins!
 background-cover(image)
   background-image: url(image)
-  background-position: cover
+  background-position: center
   background-size: cover
 
 // base
@@ -177,6 +177,7 @@ pre
   padding: 1.5em !important
   border-radius: 8px
   font-size .8em
+  max-width: 600px
 
 // content styles
 
@@ -225,7 +226,7 @@ li
   margin-bottom: 12px
 
 p
-  margin: 0 100px 12px
+  margin: 0 0 .5em
   line-height: 22px
 
 a
@@ -234,6 +235,9 @@ a
 
 del
   opacity: .5
+
+.block
+  display block
 
 .facepalm
   background-cover "../assets/images/annoyed-facepalm-picard-l.png"
@@ -244,6 +248,9 @@ del
     max-width: 30%
     margin: 0 1.5%
     max-height: 80%
+
+.autoresize
+  max-width: 100%
 
 .logo
   max-height: 80%
@@ -269,6 +276,7 @@ del
     text-transform: none
     font-weight normal
     font-size 10px
+    color gray
 
 .slide-spaghetti
   background-cover "../assets/images/curried+sardine+spaghetti+2.JPG"
@@ -278,15 +286,22 @@ del
     background-color: #272822
     padding: .2em .5em
 
+  .bullet-with-code.bespoke-bullet-active
+    pre
+      transition font-size .5s
+    &:not(.bespoke-bullet-current)
+      pre
+        font-size 12px
+
+
 .pro
-  color: #B99844
+  color: #57B944
 
 .con
-  color: #57B944
+  color: #B99844
 
 .example
   font-size .8em
-  margin-left 1em
 
 .small
   font-size .5em
@@ -352,8 +367,11 @@ del
   .col
     flex 1
     margin: 0 2em
+
 .margin-left
   margin-left: 1em
+.margin-right
+  margin-right: 1em
 
 .slide-intro
   @extend .row
@@ -425,7 +443,7 @@ del
   h2
     text-transform: uppercase
     font-size 24px
-    color gray
+    color pink
     margin-top -5em
   .col
     text-align left
@@ -443,6 +461,46 @@ del
         &, .col-title
           color gray
 
+.description
+  color gray
+
 .slide-unix-commands
   .relative
     min-height 15em
+
+.slide-alternative
+  background-cover "http://media.giphy.com/media/XuoBU7UPMulHi/giphy.gif"
+
+.slide-gulp-grunt-breakdown
+  text-align left
+
+  .row-main
+    margin-top: -5em
+
+  .col
+    margin 0
+
+  img.logo
+    margin-top -.5em
+
+  h3
+    font-size 14px
+    font-weight normal
+
+  ul
+    font-size .8em
+    font-weight: normal
+    margin-top: 1em
+
+  li
+    @extend .bespoke-bullet
+    @extend .bespoke-bullet-inactive
+    height 3em
+
+  &.jt-chain-1 .row-main > .col:nth-child(1) li:nth-child(1)
+  &.jt-chain-3 .row-main > .col:nth-child(1) li:nth-child(2)
+  &.jt-chain-5 .row-main > .col:nth-child(1) li:nth-child(3)
+  &.jt-chain-2 .row-main > .col:nth-child(2) li:nth-child(1)
+  &.jt-chain-4 .row-main > .col:nth-child(2) li:nth-child(2)
+  &.jt-chain-6 .row-main > .col:nth-child(2) li:nth-child(3)
+    @extend .bespoke-bullet-active
