@@ -3,23 +3,76 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Gulp - better grunt</title>
-    <link rel="stylesheet" href="styles/styles.css"/>
+    <title>Gulp as a better Grunt?</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
   </head>
   <body>
     <article>
-      <section>
-        <h1>Gulp</h1>
-        <h2 class="gray">... better grunt?</h2>
-        <div class="author">by <strong><a href="http://jtom.me">jacek@jtom.me</a></strong></div>
+      <section data-jt-chain="1" class="slide-intro">
+        <div class="left hide-when-1"><a href="http://gulpjs.com/"><img src="assets/images/gulp-2x.png" alt="GulpJS" class="logo"></a></div>
+        <div class="right">
+          <h2 class="white hide-when-1">as a better <a href="http://gruntjs.com/" class="grunt">Grunt</a>?</h2><small class="subcaption light gray"><span class="hide-when-1">Automate your </span><span class="show-when-1 first">What is the </span><span class="pink-when-1">front-end development workflow </span><span class="show-when-1 second">?  </span><span class="hide-when-1">fully!</span></small>
+          <div class="author-block hide-when-1">
+            <div class="author-block-left"><img src="assets/images/myphoto.png" class="author-image"></div>
+            <div class="author-block-right">
+              <div class="author-name">Jacek Tomaszewski</div>
+              <div class="author-caption"><a href="http://jtom.me">jtom.me</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="slide-workflow">
+        <h2 class="title">Front-end development Workflow<small class="title-caption">(by <a href="https://speakerdeck.com/kristories/automating-your-workflow-with-gulp-dot-js">@kristories</a>)</small></h2>
+        <div class="row">
+          <div class="col bullet">
+            <h4 class="col-title pink">Setup</h4>
+            <ul>
+              <li>Download</li>
+              <li>Scaffold</li>
+            </ul>
+          </div>
+          <div class="col bullet">
+            <h4 class="col-title pink">Develop</h4>
+            <ul>
+              <li>Watch</li>
+              <li>Lint</li>
+              <li>Compile</li>
+              <li>Test</li>
+              <li>Livereload</li>
+            </ul>
+          </div>
+          <div class="col bullet">
+            <h4 class="col-title pink">Build</h4>
+            <ul>
+              <li>Compile</li>
+              <li>Test</li>
+              <li>Concat</li>
+              <li>Minify</li>
+              <li>Deploy</li>
+            </ul>
+          </div>
+        </div>
       </section>
       <section>
         <h2>A little bit of history</h2>
-        <h3>of front-end development</h3>
+        <h3>of front-end development workflow</h3>
       </section>
       <section>
-        <h2>Years ago we had this</h2>
+        <h2>2011</h2>
+        <h3 class="bullet">Setup phase = download & scaffold ...</h3>
+        <div class="bullet sticky"><img src="assets/images/bower-screenshots/1.png" class="logo"></div>
+        <div class="bullet sticky"><img src="assets/images/bower-screenshots/2.png" class="logo"></div>
+        <div class="bullet sticky"><img src="assets/images/bower-screenshots/3.png" class="logo"></div>
+        <div class="bullet sticky"><img src="assets/images/bower-screenshots/4.png" class="logo"></div>
+        <div class="bullet sticky"><img src="assets/images/bower-screenshots/5.png" class="logo"></div>
+        <div class="bullet sticky"><img src="assets/images/bower-screenshots/6.png" class="logo"></div>
+      </section>
+      <section>
         <pre class="tolong"><code class="language-markup">&lt;head&gt;
+  &lt;link type="text/css" rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.16.custom.css" /&gt; 
+  &lt;link type="text/css" rel="stylesheet" href="css/jquery.lightbox-0.5.css" /&gt; 
+  &lt;link type="text/css" rel="stylesheet" href="css/main.css" /&gt;
+  
   &lt;script type="text/javascript" src="js/jquery-1.6.2.min.js"&gt;&lt;/script&gt;
   &lt;script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"&gt;&lt;/script&gt;
   &lt;script type="text/javascript" src="js/jquery.jplayer.min.js"&gt;&lt;/script&gt;
@@ -28,24 +81,105 @@
   &lt;script type="text/javascript" src="js/jquery.mousewheel.js"&gt;&lt;/script&gt;
   &lt;script type="text/javascript" src="js/jquery.jscrollpane.min.js"&gt;&lt;/script&gt;
   &lt;script type="text/javascript" src="js/jquery.lightbox-0.5.js"&gt;&lt;/script&gt;
-  
-  &lt;link type="text/css" rel="stylesheet" href="css/style.css" /&gt;
-  &lt;link type="text/css" rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.16.custom.css" /&gt; 
-  &lt;link type="text/css" rel="stylesheet" href="css/jquery.lightbox-0.5.css" /&gt; 
-&lt;head/&gt;
-</code></pre>
+  &lt;script type="text/javascript" src="js/main.js"&gt;&lt;/script&gt;
+&lt;head/&gt;</code></pre>
+        <h3 class="smaller">
+          <div class="bullet">In 2011, we didn't need to compile anything</div>
+          <div class="bullet"><span class="pink">Minify </span>and <span class="pink">concatenation</span>? We can do it manually</div>
+          <div class="bullet bullet-hide-if-not-current sticky"><img src="assets/images/bower-screenshots/7.png" class="logo"></div>
+          <div class="bullet"><span class="pink">Deployment? </span>Via FTP.</div>
+          <div class="bullet bullet-hide-if-not-current sticky"><img src="assets/images/bower-screenshots/8.gif" class="logo"></div>
+          <div class="bullet"><span class="pink">Testing? </span>Waat? It works. If not, I test it manually.</div>
+        </h3>
       </section>
       <section data-bespoke-state="emphatic" class="facepalm"></section>
       <section>
-        <h2>Currently, we have this</h2>
-        <div class="logos"><a href="https://github.com/bower/bower"><img src="images/bower.png" alt="Bower"></a><a href="http://gruntjs.com/"><img src="images/grunt-logo.png" alt="Grunt"></a><a href="http://yeoman.io/"><img src="images/yeoman-logo.a053.png" alt="Yeoman"></a></div>
+        <h3>Finally, <span class="pink">in 2012</span>, we met these guys:</h3>
+        <div class="logos"><a href="https://github.com/bower/bower"><img src="assets/images/bower.png" alt="Bower"></a><a href="http://yeoman.io/"><img src="assets/images/yeoman-logo.a053.png" alt="Yeoman"></a><a href="http://gruntjs.com/"><img src="assets/images/grunt-logo.png" alt="Grunt"></a></div>
       </section>
       <section>
-        <h2>So, it's like this</h2>
-        <pre><code>$ bower install --save angular
-$ bower install --save angular-resource
+        <div class="row bullet">
+          <div class="left"><a href="https://github.com/bower/bower"><img src="assets/images/bower.png" alt="Bower" class="logo logo-small"></a></div>
+          <div class="right margin-left">
+            <h2>Bower</h2>
+            <h3 class="smaller">to handle project's dependencies</h3>
+          </div>
+        </div>
+        <pre class="bullet small language-"><code><span class="gold">$</span> npm install -g bower
 
-</code><code class="language-javascript">// gruntfile.js
+<span class="gold">$</span> bower install --save jquery
+<span class="gold">$</span> bower install --save jquery-ui
+<span class="gold">$</span> bower install --save jplayer
+<span class="gold">$</span> bower install --save lightbox
+<span class="gold">$</span> bower install --save jquery.cycle
+<span class="gold">$</span> bower install --save jquery.mousewheel
+<span class="gold">$</span> bower install --save jquery.jscrollpane
+</code></pre>
+      </section>
+      <section>
+        <div class="row bullet">
+          <div class="left"><a href="http://yeoman.io/"><img src="assets/images/yeoman-logo.a053.png" alt="Yeoman" class="logo logo-small"></a></div>
+          <div class="right margin-left">
+            <h2>Yeoman</h2>
+            <h3 class="smaller">to bootstrap and scaffold projects</h3>
+          </div>
+        </div>
+        <pre class="bullet small language-"><code><span class="gold">$</span> npm install -g yo generator-bespoke
+<span class="gold">$</span> yo bespoke
+
+[?] What is the title of your presentation? Hello World
+[?] Would you like to use a pre-made theme? Yes
+[?] Would you like bullet lists? Yes
+...
+   create gulpfile.js
+   create README.md
+   create .bowerrc
+   create src/index.jade
+   create src/scripts/main.js
+...
+
+I'm all done. 
+Run `gulp serve` to run HTTP server on localhost:8080 and open your presentation!
+</code></pre>
+      </section>
+      <section>
+        <div class="row bullet">
+          <div class="left"><a href="http://gruntjs.com/"><img src="assets/images/grunt-logo.png" alt="Grunt" class="logo logo-small"></a></div>
+          <div class="right margin-left">
+            <h2>Grunt</h2>
+            <h3 class="smaller">to automate development</h3>
+          </div>
+        </div>
+        <pre class="bullet small language-"><code><span class="gold">$</span> grunt
+
+Running "<span class="gray">jshint</span>" (jshint) task
+<span class="green">>></span> 47 file lint free.
+
+Running "<span class="gray">qunit</span>" (qunit) task
+Testing test/tiny-pubsub.html....OK
+<span class="green">>></span> 4 assertions passed (23ms)
+
+Running "<span class="gray">clean:dist</span>" (clean) task
+Cleaning "dist"...OK
+
+Running "<span class="gray">concat:dist</span>" (concat) task
+File "dist/ba-tiny-pubsub.js" created.
+
+Running "<span class="gray">uglify:dist</span>" (uglify) task
+File "dist/ba-tiny-pubsub.min.js" created.
+Compressed size: <span class="green">119</span> bytes gzipped (<span class="green">185</span> bytes minified).
+
+<span class="green">Done, without errors.</span>
+
+</code></pre>
+      </section>
+      <section>
+        <h3>Frontend workflow today</h3>
+        <pre><code><span class="gold">$</span> yo webapp
+<span class="gold">$</span> bower install --save angular
+<span class="gold">$</span> bower install --save angular-resource
+
+</code><code class="smaller language-javascript">// gruntfile.js
 grunt.initConfig({
   concat: {
     dist: {
@@ -60,111 +194,320 @@ grunt.initConfig({
 </code></pre>
       </section>
       <section>
-        <h2>and also like this</h2>
-        <ul>
-          <li>minify js, css, http files</li>
-          <li>compile other syntaxes (coffeescript, sass, jade, stylus, etc.)</li>
-          <li>watch files for changes</li>
-          <li>add license info</li>
-          <li>compile HTML templates into JS</li>
-          <li>use sourcemaps</li>
-          <li>hint for errors</li>
-          <li>compress images</li>
-        </ul>
-      </section>
-      <section>
-        <h2>or even like this</h2>
-        <ul>
-          <li>run tests</li>
-          <li>deploy to server</li>
-          <li>move/create somes files, directories, symlinks</li>
-          <li>run a HTTP server</li>
-        </ul>
+        <h2>Grunt plugins allow us to:</h2>
+        <div class="row">
+          <div class="col">
+            <ul>
+              <li class="bullet">minify js, css, http files</li>
+              <li class="bullet">compile other syntaxes (coffeescript, sass, jade, stylus, etc.)</li>
+              <li class="bullet">hint for errors</li>
+              <li class="bullet">watch files for changes</li>
+              <li class="bullet">run a HTTP server</li>
+              <li class="bullet">run tests</li>
+            </ul>
+          </div>
+          <div class="col">
+            <ul>
+              <li class="bullet">add license info</li>
+              <li class="bullet">compile HTML templates into JS</li>
+              <li class="bullet">use sourcemaps</li>
+              <li class="bullet">compress images</li>
+              <li class="bullet">move/create somes files, directories, symlinks</li>
+              <li class="bullet">deploy to server</li>
+            </ul>
+          </div>
+        </div>
       </section>
       <section>
         <h2>This was fine.</h2>
         <h3>But brought as to ..</h3>
       </section>
-      <section class="spaghetti">
+      <section class="slide-spaghetti">
         <div class="bullet"></div>
-        <div class="bullet">
-          <h2>this.</h2>
-          <pre data-src="examples/lineman_gruntfile.js" class="language-javascript toolong"></pre>
+        <div class="bullet bullet-with-code">
+          <h4 class="title">... big bunch of spaghetti code.</h4>
+          <pre data-src="assets/examples/lineman_gruntfile.js" class="language-javascript toolong"></pre>
+        </div>
+        <div class="bullet"></div>
+      </section>
+      <section>
+        <h2>Grunt's issues</h2>
+        <ul>
+          <li class="bullet"><span class="pro">Grunt config file is divided by plugins </span><span class="con">(not modules / features)</span></li>
+          <li class="bullet relative"><span class="pro">Generates a lot of tmp files, </span><span class="con">which shouldn't be written to disc anyway and could be handled in memory</span>
+            <div class="example">
+              <ol>
+                <li>compile .coffee to .js</li>
+                <li>concat .js files into main.js</li>
+                <li>minify main.js to main.min.js</li>
+              </ol><strong>1 task, 3 plugins, 2 sets of temporary files</strong>
+            </div><br><a href="http://slides.com/contra/gulp#/10"><img src="assets/images/oeCGJUS.png" class="autoresize"></a>
+            <div class="image-caption">image by: <a href="contra/gulp">contra/gulp</a></div>
+          </li>
+        </ul>
+      </section>
+      <section class="slide-alternative"></section>
+      <section class="slide-unix-commands">
+        <h3>What if we could write tasks as stream-based commands on unix?</h3>
+        <div class="relative extended-width">
+          <div class="bullet bullet-hide-if-not-current absolute align-left"><a href="http://slides.com/contra/gulp#/9"></a><img src="assets/images/B0B77QN.png" class="autoresize">
+            <div class="image-caption">image by: <a href="contra/gulp">contra/gulp</a></div>
+          </div>
+          <div class="bullet bullet-hide-if-not-current absolute align-left">
+            <h4 class="smaller pink">Example of Unix commands</h4>
+            <ol>
+              <li>Find all files in this directory</li>
+              <li>Get only those with word "grunt"</li>
+              <li>Delete them</li>
+            </ol>
+            <pre class="language-"><code><span class="gold">$</span> find . | grep -l "grunt" | xargs -I {} rm -rf {}
+</code></pre>
+          </div>
+          <div class="bullet bullet-hide-if-not-current absolute align-left">
+            <h4 class="smaller pink">Example of "Imaginary front-end command"</h4>
+            <ol>
+              <li>Find all *.coffee files, </li>
+              <li>Compile them to JS, </li>
+              <li>Send through ngMinify and UglifyJS (using sourcemaps), </li>
+              <li>Concat into one file,</li>
+              <li>Finally save into one final file: "dist/js/main.js".</li>
+            </ol>
+            <pre class="language-"><code><span class="gold">$</span> find src -name '*.coffee' | coffee | ng-minify | \
+  uglify --sourcemaps=true | concat > dist/js/main.js
+  </code></pre>
+          </div>
+        </div>
+      </section>
+      <section data-bespoke-state="emphatic"><a href="http://gulpjs.com/"><img src="assets/images/gulp-2x.png" alt="GulpJS" class="logo"></a></section>
+      <section data-jt-chain="6" class="slide-gulp-grunt-breakdown">
+        <div class="row row-main">
+          <div class="col">
+            <div class="row">
+              <div><a href="http://gruntjs.com/"><img src="assets/images/grunt-logo.png" alt="Grunt" class="logo logo-small"></a></div>
+              <div>
+                <h2 class="smaller grunt">Grunt</h2>
+                <h3 class="white smaller">Configuration over code</h3>
+              </div>
+            </div>
+            <ul>
+              <li>Configure plugins separately</li>
+              <li>You have to define exact order of tasks</li>
+              <li>Tasks can be run concurrently, if you configure <a href="https://github.com/sindresorhus/grunt-concurrent">grunt-concurrent</a> plugin</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="margin-right"><a href="http://gulpjs.com/"><img src="assets/images/gulp-2x.png" alt="GulpJS" class="logo logo-small"></a></div>
+              <div>
+                <h2 class="smaller">Gulp</h2>
+                <h3 class="white smaller">Code over configuration</h3>
+              </div>
+            </div>
+            <ul>
+              <li>Manually write your tasks, using a stream or promise</li>
+              <li>Gulp will take care of your tasks dependencies itself</li>
+              <li>Tasks are run concurrently</li>
+            </ul>
+          </div>
         </div>
       </section>
       <section>
-        <h2 class="smaller">Grunt is fine for basic applications</h2>
-        <h3 class="smaller">but not for everything.</h3>
-        <ul>
-          <li><span class="con">Grunt config file is divided by plugins </span><span class="pro">(not modules / features)</span></li>
-          <li><span class="con">Generates a lot of tmp files, </span><span class="pro">which shouldn't be written to disc anyway and could be handled in memory</span>
-            <div class="example">compile .coffee files, concat into main.js, ngMinify, uglify, add license banner<br> = 4 tasks, 2 sets of temporary files</div>
-          </li>
-          <li><span class="con">A lot of plugins, </span><span class="pro">which configuration is often limited and often shouldn't even be a plugin</span></li>
-        </ul>
-      </section>
-      <section>
-        <h3>What if we could write tasks as stream-based commands on unix?</h3>
-        <pre class="small language-"><code>$ find src -name '*.coffee' | coffee | ng-minify | uglify --sourcemaps=true | concat > dist/js/main.js
-</code></pre>
-      </section>
-      <section data-bespoke-state="emphatic"><a href="http://gulpjs.com/"><img src="images/gulp-2x.png" alt="GulpJS" class="logo"></a></section>
-      <section>
-        <h2>Gulp</h2>
-        <h3>Code over configuration</h3>
-        <ul>
-          <li>Manually write your tasks, using a stream or promise</li>
-          <li>Gulp will take care of your tasks dependencies itself</li>
-          <li>Tasks are run concurrently</li>
-        </ul>
-      </section>
-      <section>
-        <h2>Task example <a href="http://markgoodyear.com/2014/01/getting-started-with-gulp/" class="gray">(source)</a></h2>
+        <h2 class="smaller">Gulp task example <a href="http://markgoodyear.com/2014/01/getting-started-with-gulp/" class="gray">(source)</a></h2>
         <pre class="language-javascript"><code>gulp.task('scripts', function() {
   return gulp.src('src/scripts/**/*.js') // <-- Read from FS
-  
-    // In memory transforms:
     .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
     .pipe(gulp.dest('dist/assets/js')) // <-- Write to FS
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
     .pipe(gulp.dest('dist/assets/js')) // <-- Write to FS
-    .pipe(livereload(server))
-    .pipe(notify({ message: 'Scripts task complete' }));
+    .pipe(livereload(server));
 });
 </code></pre>
       </section>
       <section>
-        <h2 class="bullet">Gulp consists only of four functions</h2>
+        <h2 class="bullet smaller">Gulp API</h2>
+        <p>is just four functions</p>
         <ul class="bullets">
-          <li><code>gulp.src(glob)</code><span class="desc">- create a stream from given file system glob.</span></li>
-          <li><code>gulp.dest(folder)</code><span class="desc">- save files from a stream to given directory.</span></li>
-          <li><code>gulp.task(name, [deps,], fn)</code><span class="desc">- define a task with optional dependencies.</span></li>
-          <li><code>gulp.watch(glob, [tasks])</code><span class="desc">- run a task when one of the globbed files is changed.</span></li>
+          <li><code>gulp.task(name, [deps,], fn)</code>
+            <div class="description">define a task with optional dependencies.</div>
+          </li>
+          <li><code>gulp.src(glob)</code>
+            <div class="description">create a stream from given file system glob.</div>
+          </li>
+          <li><code>gulp.dest(folder)</code>
+            <div class="description">save files from a stream to given directory.</div>
+          </li>
+          <li><code>gulp.watch(glob, tasks)</code>
+            <div class="description">run a task when one of the globbed files is changed.</div>
+          </li>
         </ul>
-        <p class="bullet pink"><strong>That's it!</strong></p>
+        <h2 class="smaller"><span class="pink bullet">That's it! </span>
+        </h2>
       </section>
       <section>
-        <h2>Live demo</h2><a href="https://github.com/jtomaszewski/ionic-angular-cordova-gulp-seed/tree/78cd4498d297381db4650fc3600b918c432a95a1">jtomaszewski/ionic-angular-cordova-gulp-seed</a>
+        <h2 class="smaller"><code>
+            gulp.task(name, [deps,], fn)
+            </code></h2>
+        <div style="height:15em" class="relative extended-width">
+          <pre class="language-javascript bullet bullet-hide-if-not-current sticky"><code>gulp.task("name", ["dependency-task"], function(done) {
+  // do sth ...
+  done();
+});
+</code></pre>
+          <pre class="language-javascript bullet bullet-hide-if-not-current sticky"><code>gulp.task("build", ["compile-js", "compile-css"]);
+</code></pre>
+          <pre class="language-javascript bullet bullet-hide-if-not-current sticky"><code>gulp.task("default", ["build", "server", "watch"]);
+</code></pre>
+        </div>
       </section>
       <section>
-        <h2>So why it's better than Grunt?</h2>
-        <p>As the gulpjs.com says:</p>
-        <ul class="nostyle">
-          <li><strong class="white">Speed</strong> - tasks run concurrently</li>
-          <li><strong class="white">Efficiency</strong> - no unnecessary temporary files</li>
-          <li><strong class="white">Simplicity</strong> - Gulpfile is much cleaner</li>
-        </ul>
+        <h2 class="smaller"><code>gulp.src(glob)</code></h2>
+        <div style="height:15em" class="relative extended-width">
+          <pre class="language-javascript bullet bullet-hide-if-not-current sticky"><code>gulp.src(["app/js/**/*.js", "assets/js/**/*.js"])
+</code></pre>
+          <pre class="language-javascript bullet bullet-hide-if-not-current sticky"><code>gulp.task("validate-js", function(){
+  return gulp.src("app/js/**/*.js")
+    .pipe(jshint());
+});
+</code></pre>
+        </div>
       </section>
       <section>
-        <h2>Watch out</h2>
-        <ul class="bullets">
-          <li><strong>It's still under heavy development.</strong><br>Some basic issues are yet to be resolved (<a href="https://github.com/wearefractal/gulp-coffee/issues/14">sourcemaps</a>, <a href="https://github.com/gulpjs/gulp/issues/259">watch</a>).</li>
-          <li>However, <strong>Gulp 4</strong> will resolve them completely (and change syntax a little).<br><small>More info <a href="https://github.com/gulpjs/gulp/issues/347">here</a> and <a href="https://github.com/gulpjs/gulp/issues/355">here</a>.</small></li>
-          <li><strong>Still, worth a try in your next project.</strong></li>
-        </ul>
+        <h2 class="smaller"><code>gulp.dest(glob)</code></h2>
+        <div style="height:15em" class="relative extended-width">
+          <pre class="language-javascript bullet bullet-hide-if-not-current sticky"><code>gulp.dest("./dist/js/")
+</code></pre>
+          <pre class="language-javascript bullet bullet-hide-if-not-current sticky"><code>gulp.task("compile-js", function(){
+  return gulp.src("app/js/**/*.js")
+    .pipe(concat("app.js"))
+    .pipe(gulp.dest("./dist/js/"));
+});
+</code></pre>
+        </div>
+      </section>
+      <section>
+        <h2 class="smaller"><code>gulp.watch(glob, tasks)</code></h2>
+        <div style="height:15em" class="relative extended-width">
+          <pre class="language-javascript bullet bullet-hide-if-not-current sticky"><code>gulp.task("watch", function(){
+  gulp.watch("app/js/**/*.js", ["validate-js", "compile-js"]);
+});
+</code></pre>
+        </div>
+      </section>
+      <section>
+        <h2>How to start?</h2>
+        <ol class="bullets">
+          <li>
+            <p>Install Node & Gulp</p><a href="http://nodejs.org/" class="block pink">http://nodejs.org/</a><a href="http://gulpjs.com/" class="block pink">http://gulpjs.com/</a>
+          </li>
+          <li>
+            <p>Install some Gulp plugins</p><a href="http://gulpjs.com/plugins/" class="block pink">http://gulpjs.com/plugins/</a>
+          </li>
+          <li>
+            <p>Create <span class="gray">gulpfile.js </span>and code it</p>
+          </li>
+          <li>Profit!</li>
+        </ol>
+      </section>
+      <section>
+        <pre class="language-"><code class="bullet"><span class="gray"># Enter the project's directory</span>
+<span class="gold">$</span> cd myapp
+
+</code><code class="bullet"><span class="gray"># Create package.json file (if nonexistent yet)</span>
+<span class="gold">$</span> npm init
+
+</code><code class="bullet"><span class="gray"># Install gulp & its' plugins locally</span>
+<span class="gray"># (and add them to package.json)</span>
+<span class="gold">$</span> npm install --save-dev gulp gulp-sass gulp-coffee
+
+</code><code class="bullet"><span class="gray"># Code the gulpfile.js file (but learn Gulp's API first)</span>
+<span class="gold">$</span> vim gulpfile.js
+
+</code><code class="bullet"><span class="gray"># Finally, run a gulp's task!</span>
+<span class="gold">$</span> gulp build
+</code></pre>
+      </section>
+      <section>
+        <pre class="language-javascript"><code class="bullet">var gulp = require("gulp");
+
+gulp.task("build", function(){
+  // TODO
+});
+
+gulp.task("watch", function(){
+  // TODO  
+});
+
+gulp.task("default", ["build", "watch"]);
+</code></pre>
+        <h3 class="smaller">gulpfile.js</h3>
+      </section>
+      <section>
+        <pre class="language-javascript"><code class="bullet">var paths = {
+  scripts: "app/js/**/*.coffee",
+  stylesheets: "app/css/**/*.sass"
+};
+
+gulp.task("build", ["compile-js", "compile-css"]);
+
+gulp.task("watch", function(){
+  gulp.watch(paths.scripts, ["compile-js"]);
+  gulp.watch(paths.stylesheets, ["compile-css"]);
+});
+</code></pre>
+        <h3 class="smaller">gulpfile.js</h3>
+      </section>
+      <section>
+        <pre class="language-javascript"><code class="bullet">var sass = require("gulp-sass");
+
+gulp.task("compile-css", function(){
+  return gulp.src(paths.stylesheets)
+    .pipe(sass())
+    .pipe(gulp.dest("build/css/"));
+});
+</code></pre>
+        <h3 class="smaller">gulpfile.js</h3>
+      </section>
+      <section>
+        <pre class="language-javascript"><code class="bullet">var coffee = require("gulp-coffee");
+
+gulp.task("compile-js", function(){
+  return gulp.src(paths.scripts)
+    .pipe(coffee())
+    .pipe(gulp.dest("build/js/"));
+});
+</code></pre>
+        <h3 class="smaller">gulpfile.js</h3>
+      </section>
+      <section>
+        <h2>Live demo</h2><a href="https://github.com/jtomaszewski/ionic-cordova-gulp-seed">jtomaszewski/ionic-cordova-gulp-seed</a>
+      </section>
+      <section>
+        <h2 class="smaller">So why it's better than <span class="grunt"> Grunt</span>?</h2>
+        <div class="align-left">
+          <p>As the gulpjs.com says:</p>
+          <ul class="nostyle">
+            <li class="align-left"><strong class="white">Speed</strong> - tasks run concurrently</li>
+            <li class="align-left"><strong class="white">Efficiency</strong> - no unnecessary temporary files</li>
+            <li class="align-left"><strong class="white">Simplicity</strong> - Gulpfile is much cleaner</li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h2>Gulp-Links</h2>
+        <div class="align-left">
+          <h4>Blog posts</h4>
+          <ul>
+            <li><a href="http://www.100percentjs.com/just-like-grunt-gulp-browserify-now/">And just like that Grunt and RequireJS are out, it’s all about Gulp and Browserify now</a></li>
+            <li><a href="http://markgoodyear.com/2014/01/getting-started-with-gulp/">Getting started with Gulp</a></li>
+            <li><a href="http://jmperezperez.com/gulp-js/">Gulp.js, an alternative to Grunt.js</a></li>
+            <li><a href="https://blog.engineyard.com/2014/frontend-dependencies-management-part-2">Managing Frontend Dependencies & Deployment Part 2: Gulp</a></li>
+            <li><a href="https://speakerdeck.com/addyosmani/automating-front-end-workflow">Automating Front-end Workflow</a></li>
+            <li><a href="https://speakerdeck.com/kristories/automating-your-workflow-with-gulp-dot-js">Automating your workflow with gulp.js</a></li>
+            <li><a href="https://speakerdeck.com/bermonpainter/front-end-workflows-with-gulp">Front-end workflows with Gulp</a></li>
+          </ul>
+        </div>
       </section>
       <section>
         <h2>Gulp-Links</h2>
@@ -175,11 +518,10 @@ grunt.initConfig({
             <li><a href="http://murphyrandle.github.io/AGulpOfGulp/#/">A gulp of Gulp</a></li>
             <li><a href="http://slides.com/contra/gulp">Gulp - the streaming build system</a></li>
           </ul><br>
-          <h4>Blog posts</h4>
+          <h4>Other</h4>
           <ul>
-            <li><a href="http://www.100percentjs.com/just-like-grunt-gulp-browserify-now/">And just like that Grunt and RequireJS are out, it’s all about Gulp and Browserify now</a></li>
-            <li><a href="http://markgoodyear.com/2014/01/getting-started-with-gulp/">Getting started with Gulp</a></li>
-            <li><a href="http://jmperezperez.com/gulp-js/">Gulp.js, an alternative to Grunt.js</a></li>
+            <li><a href="http://gulpfiction.divshot.io/">GulpFiction - web-browser UI for creating your gulpfile.js !</a></li>
+            <li><a href="https://www.youtube.com/watch?v=6Jhgkp67GxI">Gulp This Screencast</a></li>
           </ul>
         </div>
       </section>
@@ -189,7 +531,7 @@ grunt.initConfig({
         <div class="author footer">by <strong><a href="http://jtom.me">jacek@jtom.me</a></strong></div>
       </section>
     </article>
-    <script src="scripts/scripts.js"></script>
+    <script src="build/build.js"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
